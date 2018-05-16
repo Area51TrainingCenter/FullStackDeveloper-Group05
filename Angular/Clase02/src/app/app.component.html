@@ -1,2 +1,18 @@
 <app-alerta></app-alerta>
 <app-conformidad></app-conformidad>
+
+<!--<input type="text" (input)="setearNombreTarea($event)">-->
+<input type="text" [(ngModel)]="tareaAgregada">
+<br>
+<input type="text" [(ngModel)]="propietario" placeholder="Ingrese propietario">
+<p>{{propietario}}</p>
+
+<button [disabled]="!propietario.trim()" (click)="agregarPropietario()">Agregar propietario</button>
+<br>
+<button [disabled]="permitido" (click)="agregarTarea()">Agregar Tarea</button>
+
+<p>{{estado}}</p>
+
+<p>{{permitido}}</p>
+
+<p [innerText]="permitido"></p>
