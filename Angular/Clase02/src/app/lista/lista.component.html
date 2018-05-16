@@ -1,0 +1,10 @@
+<button (click)="mostrarDatos()">Mostrar/Ocultar</button>
+<p *ngIf="mostrar">
+	correo: usuario@correo.com
+</p>
+
+<ul>
+	<li *ngFor="let vez of veces" [ngStyle]="{backgroundColor: obtenerColor(vez)}">
+		{{vez}}
+	</li>
+</ul>

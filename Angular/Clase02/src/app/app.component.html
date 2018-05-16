@@ -1,3 +1,4 @@
+<app-lista></app-lista>
 <app-alerta></app-alerta>
 <app-conformidad></app-conformidad>
 
@@ -11,8 +12,17 @@
 <br>
 <button [disabled]="permitido" (click)="agregarTarea()">Agregar Tarea</button>
 
-<p>{{estado}}</p>
+<p *ngIf="tareaAsignada; else noHayTarea">{{estado}}</p>
+<ng-template #noHayTarea>
+	No se ha agregado ninguna tarea aún.
+</ng-template>
 
 <p>{{permitido}}</p>
 
 <p [innerText]="permitido"></p>
+<!--<app-tarea *ngFor="let tarea of tareas"></app-tarea>-->
+<div *ngFor="let nombreTarea of tareas; let indice = index">
+	{{indice+1}} - {{nombreTarea}}
+</div>
+<hr>
+<app-lista-tareas></app-lista-tareas>

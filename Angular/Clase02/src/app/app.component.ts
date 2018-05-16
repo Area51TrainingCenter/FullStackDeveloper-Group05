@@ -10,6 +10,10 @@ export class AppComponent {
 	estado: string = "No hay tareas agregadas"
 	tareaAgregada: string = ""
 	propietario: string = ""
+	tareaAsignada: boolean = false
+
+	tareas: string[] = ["Tarea 1", "Tarea 2", "Tarea 3"]
+	// tareas: Array<string>
 
 	constructor() {
 		setTimeout(
@@ -20,6 +24,8 @@ export class AppComponent {
 	}
 
 	agregarTarea() {
+		this.tareaAsignada = true
+		this.tareas.push(this.tareaAgregada)
 		//this.estado = "Se ha agregado una tarea: " + this.tareaAgregada
 		this.estado = `
 			Se ha agregado una tarea: ${this.tareaAgregada}
