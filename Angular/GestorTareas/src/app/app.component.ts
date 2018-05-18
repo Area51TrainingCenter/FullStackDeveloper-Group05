@@ -16,5 +16,8 @@ export class AppComponent {
 		//this.tarea = {}
 	}
 
-
+	eliminar(tarea: ITarea) {
+		const indice: number = this.tareas.indexOf(tarea)
+		this.tareas.splice(indice, 1)
+	}
 }

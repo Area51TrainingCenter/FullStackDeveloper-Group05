@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ITarea } from '../modelos/tarea.interface';
 
 @Component({
@@ -8,28 +8,15 @@ import { ITarea } from '../modelos/tarea.interface';
 })
 export class ListadoComponent implements OnInit {
 
-	@Input() datos: ITarea[]
+	@Input("datos") tareas: ITarea[]
+	@Output() onTareaEliminada = new EventEmitter<ITarea>()
 
 	constructor() { }
 
 	ngOnInit() {
 	}
 
-	obtenerColorTarea(estado: string): string {
-		switch (estado) {
-			case "sin-asignar":
-				return "red"
-			case "asignada":
-				return "gray"
-			case "en-proceso":
-				return "yellow"
-			case "terminada":
-				return "brown"
-			case "cancelada":
-				return "orange"
-			default:
-				return "white"
-		}
+	eliminar(tarea: ITarea) {
+		this.onTareaEliminada.emit(tarea)
 	}
-
 }
