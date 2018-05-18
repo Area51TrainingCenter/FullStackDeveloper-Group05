@@ -1,0 +1,13 @@
+<div class="container">
+	<div class="row">
+		<div class="card z-depth-4" *ngFor="let tareaItem of datos" [ngStyle]="{backgroundColor: obtenerColorTarea(tareaItem.estado)}">
+			<div class="card-content">
+				<h3>{{tareaItem.titulo}}</h3>
+				<p>Solicitante: {{tareaItem.solicitante}}</p>
+				<p>Fecha: {{tareaItem.fecha}}</p>
+				<p>Estado: {{tareaItem.estado}}</p>
+			</div>
+			<div class="card-actions"></div>
+		</div>
+	</div>
+</div>
