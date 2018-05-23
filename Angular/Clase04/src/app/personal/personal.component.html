@@ -1,0 +1,17 @@
+<article>
+	<div>
+		<h2>Activos</h2>
+		<app-activos *ngFor="let activo of listaActivos; let indice=index" [indice]="indice" (onSeleccionado)="indiceSeleccionado=$event">
+			{{activo}}
+		</app-activos>
+	</div>
+	<div>
+		<button (click)="cesar()" [disabled]="indiceSeleccionado=== -1">Cesar</button>
+	</div>
+	<div>
+		<h2>Cesados</h2>
+		<app-cesados *ngFor="let cesado of listaCesados">
+			{{cesado}}
+		</app-cesados>
+	</div>
+</article>

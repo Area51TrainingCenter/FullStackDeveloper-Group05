@@ -1,0 +1,11 @@
+<button (click)="agregar()">Agregar</button>
+<button (click)="quitar()">Quitar</button>
+<button (click)="cambiarPrimerElemento()">Cambiar valor</button>
+
+<app-item *ngFor="let elemento of elementos; let indice=index" [entrada]="elemento">
+	<h2>{{indice}}</h2>
+</app-item>
+
+<app-externo>
+	<h1 #tituloExterno>Título del contenido externo</h1>
+</app-externo>

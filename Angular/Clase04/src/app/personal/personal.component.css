@@ -1,0 +1,8 @@
+article {
+	display: flex;
+	width: 60%
+}
+
+div {
+	flex-grow: 1
+}
