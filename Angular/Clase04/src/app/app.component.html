@@ -1,0 +1,17 @@
+<input type="text" placeholder="Ingrese su nombre" #nombre>
+<br>
+<input type="email" placeholder="Ingrese su correo" #correo>
+<br>
+<button (click)="registrar(nombre.value, correo.value)">Registrar</button>
+
+<button (click)="colorearInputs()">Colorear</button>
+
+<app-generador-numero (onNumero)="agregarNumero($event)"></app-generador-numero>
+<article>
+	<div>
+		<app-par *ngFor="let par of pares" [numero]="par"></app-par>
+	</div>
+	<div>
+		<app-impar *ngFor="let impar of impares" [numero]="impar"></app-impar>
+	</div>
+</article>
