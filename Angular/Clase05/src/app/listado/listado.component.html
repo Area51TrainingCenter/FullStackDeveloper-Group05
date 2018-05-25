@@ -1,0 +1,5 @@
+<div *ngFor="let equipo of equipos; let indice = index">
+	<app-equipo [equipo]="equipo" [indice]="indice" (onMovimiento)="generarMovimiento($event)"></app-equipo>
+	<br>
+	<button (click)="mostrarHistorial(indice)">Mostrar historial</button>
+</div>

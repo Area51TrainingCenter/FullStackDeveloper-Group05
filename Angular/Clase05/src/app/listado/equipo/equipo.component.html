@@ -1,0 +1,10 @@
+<div>
+	<h2>{{equipo.nombre}}</h2>
+	<span [innerText]="equipo.estado"></span>
+	<br>
+	<input type="text" #persona>
+	<br>
+	<button (click)="registrarMovimiento(persona.value, 'prestado')">Prestado</button>
+	<button (click)="registrarMovimiento(persona.value, 'devuelto')">Devuelto</button>
+	<button (click)="registrarMovimiento(persona.value, 'reparación')">Reparación</button>
+</div>

@@ -1,0 +1,10 @@
+<app-formulario (onNuevoEquipo)="agregarEquipo($event)"></app-formulario>
+
+<article>
+	<div>
+		<app-listado [equipos]="equipos" (onMovimiento)="agregarMovimiento($event)" (onMostrarHistorial)="seleccionarEquipo($event)"></app-listado>
+	</div>
+	<div>
+		<app-historial [historial]="historial"></app-historial>
+	</div>
+</article>

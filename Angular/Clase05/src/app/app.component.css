@@ -1,0 +1,7 @@
+article {
+	display: flex;
+}
+
+article div {
+	flex-grow: 1
+}
