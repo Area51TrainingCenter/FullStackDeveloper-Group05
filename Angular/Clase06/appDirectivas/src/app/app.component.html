@@ -1,0 +1,77 @@
+<article miColor>Texto del article</article>
+<hr>
+
+<select appLista></select>
+<hr>
+
+<section appHover>Texto del section</section>
+<hr>
+
+<ul appAgregarli>
+	<li>Elemento inicial</li>
+</ul>
+<hr>
+
+<article>
+	<h2>Nombre producto</h2>
+	<span *ngIf="stock>0">Stock: {{stock}}</span>
+	<span *ngIf="stock==0">Producto agotado</span>
+</article>
+<hr>
+
+<article>
+	<h2>Nombre producto</h2>
+	<ng-template [ngIf]="stock>0">
+		<span>Stock: {{stock}}</span>
+	</ng-template>
+	<ng-template [ngIf]="stock==0">
+		<span>Producto agotado</span>
+	</ng-template>
+</article>
+<hr>
+
+<div [ngSwitch]="nota">
+	<span *ngSwitchCase="5">Necesitas estudiar harto</span>
+	<span *ngSwitchCase="13">Más o menos</span>
+	<span *ngSwitchDefault>Que bueno sigue adelante</span>
+</div>
+
+<hr>
+
+<section [appHoverAvanzado]="'greenyellow'" [colorHover]="'green'">Texto de hover avanzado</section>
+<hr>
+
+<select [appDistritos]="distritos"></select>
+<hr>
+<button [appProcesando]="procesando" (click)="ejecutarTimer()">Grabar</button>
+
+<p [ngStyle]="{color: colorLetra(listaCanciones[0].anno)}" [ngClass]="{letraVerdana: (listaCanciones[0].anno<=2000), letraArial: (listaCanciones[0].anno>2000)}">
+	{{listaCanciones[0].titulo}} - {{listaCanciones[0].anno}}
+</p>
+<p [ngStyle]="{color: colorLetra(listaCanciones[1].anno)}" [ngClass]="{letraVerdana: (listaCanciones[1].anno<=2000), letraArial: (listaCanciones[1].anno>2000)}">
+	{{listaCanciones[1].titulo}} - {{listaCanciones[1].anno}}
+</p>
+<p [ngStyle]="{color: colorLetra(listaCanciones[2].anno)}" [ngClass]="{letraVerdana: (listaCanciones[2].anno<=2000), letraArial: (listaCanciones[2].anno>2000)}">
+	{{listaCanciones[2].titulo}} - {{listaCanciones[2].anno}}
+</p>
+<p [ngStyle]="{color: colorLetra(listaCanciones[3].anno)}" [ngClass]="{letraVerdana: (listaCanciones[3].anno<=2000), letraArial: (listaCanciones[3].anno>2000)}">
+	{{listaCanciones[3].titulo}} - {{listaCanciones[3].anno}}
+</p>
+<p [ngStyle]="{color: colorLetra(listaCanciones[4].anno)}" [ngClass]="{letraVerdana: (listaCanciones[4].anno<=2000), letraArial: (listaCanciones[4].anno>2000)}">
+	{{listaCanciones[4].titulo}} - {{listaCanciones[4].anno}}
+</p>
+<p [ngStyle]="{color: colorLetra(listaCanciones[5].anno)}" [ngClass]="{letraVerdana: (listaCanciones[5].anno<=2000), letraArial: (listaCanciones[5].anno>2000)}">
+	{{listaCanciones[5].titulo}} - {{listaCanciones[5].anno}}
+</p>
+<p [ngStyle]="{color: colorLetra(listaCanciones[6].anno)}" [ngClass]="{letraVerdana: (listaCanciones[6].anno<=2000), letraArial: (listaCanciones[6].anno>2000)}">
+	{{listaCanciones[6].titulo}} - {{listaCanciones[6].anno}}
+</p>
+<p [ngStyle]="{color: colorLetra(listaCanciones[7].anno)}" [ngClass]="{letraVerdana: (listaCanciones[7].anno<=2000), letraArial: (listaCanciones[7].anno>2000)}">
+	{{listaCanciones[7].titulo}} - {{listaCanciones[7].anno}}
+</p>
+<p [ngStyle]="{color: colorLetra(listaCanciones[8].anno)}" [ngClass]="{letraVerdana: (listaCanciones[8].anno<=2000), letraArial: (listaCanciones[8].anno>2000)}">
+	{{listaCanciones[8].titulo}} - {{listaCanciones[8].anno}}
+</p>
+<p [ngStyle]="{color: colorLetra(listaCanciones[9].anno)}" [ngClass]="{letraVerdana: (listaCanciones[9].anno<=2000), letraArial: (listaCanciones[9].anno>2000)}">
+	{{listaCanciones[9].titulo}} - {{listaCanciones[9].anno}}
+</p>
