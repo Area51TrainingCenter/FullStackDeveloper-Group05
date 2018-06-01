@@ -1,0 +1,6 @@
+<div *ngFor="let libro of data">
+	<h1>{{libro.titulo}}</h1>
+	<button (click)="seleccionar(libro)">Seleccionar</button>
+</div>
+
+<app-formulario></app-formulario>
