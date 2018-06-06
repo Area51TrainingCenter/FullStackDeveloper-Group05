@@ -1,0 +1,8 @@
+<a [routerLink]="[ '/' ] " routerLinkActive="activo" [routerLinkActiveOptions]="{exact: true}">Home</a>
+<br>
+<a [routerLink]=" [ '/libros' ] " routerLinkActive="activo" [routerLinkActiveOptions]="{exact: true}">Libros</a>
+<br>
+<a [routerLink]=" [ '/libros', 10, 'edicion' ] " [queryParams]="{titulo: 'El Perfume', anno: 2002}" fragment="admin" routerLinkActive="activo"
+ [routerLinkActiveOptions]="{exact: true}">Edición</a>
+<br> {{ fecha }}
+<router-outlet></router-outlet>
