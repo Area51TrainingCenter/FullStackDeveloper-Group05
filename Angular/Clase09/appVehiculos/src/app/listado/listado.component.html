@@ -1,0 +1,30 @@
+<div>
+	<table>
+		<thead>
+			<tr>
+				<td>Marca</td>
+				<td>Modelo</td>
+				<td>Año</td>
+				<td>Tipo</td>
+				<td>Acciones</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let vehiculo of listadoVehiculos; let indice=index">
+				<td>{{vehiculo.marca}}</td>
+				<td>{{vehiculo.modelo}}</td>
+				<td>{{vehiculo.anno}}</td>
+				<td>{{mostrarTipo(vehiculo.tipo)}}</td>
+				<td>
+					<a [routerLink]="['/vehiculos', indice, 'edicion']">Editar</a>
+					<button (click)="eliminar(indice)">Eliminar</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<a routerLink="/vehiculos/nuevo">Agregar vehículo</a>
+</div>
+
+<div>
+	<router-outlet></router-outlet>
+</div>

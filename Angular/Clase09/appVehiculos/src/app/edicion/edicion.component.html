@@ -1,0 +1,13 @@
+<input type="text" [(ngModel)]="vehiculo.marca" placeholder="Marca">
+<br>
+<input type="text" [(ngModel)]="vehiculo.modelo" placeholder="Modelo">
+<br>
+<input type="number" [(ngModel)]="vehiculo.anno" placeholder="Año de fabricación">
+<br>
+<select [(ngModel)]="vehiculo.tipo">
+	<option value="0">Sedán</option>
+	<option value="1">Camioneta</option>
+	<option value="2">Camión</option>
+</select>
+<br>
+<button (click)="grabar()">Grabar</button>
