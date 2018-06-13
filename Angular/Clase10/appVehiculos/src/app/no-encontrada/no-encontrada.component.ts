@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-no-encontrada',
-  templateUrl: './no-encontrada.component.html',
-  styleUrls: ['./no-encontrada.component.css']
+	selector: 'app-no-encontrada',
+	templateUrl: './no-encontrada.component.html',
+	styleUrls: ['./no-encontrada.component.css']
 })
 export class NoEncontradaComponent implements OnInit {
+	mensaje: string
 
-  constructor() { }
+	constructor(private rutaActiva: ActivatedRoute) { }
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+		this.mensaje = this.rutaActiva.snapshot.data["msg"]
+	}
 
 }

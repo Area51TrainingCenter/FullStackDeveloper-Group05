@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { ListadoComponent } from './listado/listado.component';
 import { NoEncontradaComponent } from './no-encontrada/no-encontrada.component';
 import { NuevoComponent } from './nuevo/nuevo.component';
+import { VehiculosResolve } from './resolves/vehiculos.resolve';
 
 const rutas: Route[] = [
 	{ path: "", component: HomeComponent, pathMatch: "full" },
@@ -14,9 +15,16 @@ const rutas: Route[] = [
 		path: "vehiculos", component: ListadoComponent, canActivateChild: [AutenticacionGuards], children: [
 			{ path: ":id/edicion", component: EdicionComponent, canDeactivate: [DataSalvadaGuard] },
 			{ path: "nuevo", component: NuevoComponent, canActivate: [AutenticacionGuards] }
-		]
+		],
+		resolve: {
+			listadoVehiculos: VehiculosResolve
+		}
 	},
-	{ path: "no-existe", component: NoEncontradaComponent },
+	{
+		path: "no-existe", component: NoEncontradaComponent, data: {
+			msg: "Path not found"
+		}
+	},
 	{ path: "**", redirectTo: "no-existe" }
 
 

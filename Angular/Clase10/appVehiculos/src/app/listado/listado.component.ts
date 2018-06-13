@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IVehiculo, tipoVehiculo } from '../models/vehiculo.interface';
 import { VehiculoService } from '../servicios/vehiculo.service';
@@ -11,9 +12,13 @@ import { VehiculoService } from '../servicios/vehiculo.service';
 export class ListadoComponent implements OnInit {
 	listadoVehiculos: IVehiculo[]
 	suscripcion: Subscription
-	constructor(private vehiculoService: VehiculoService) { }
+	constructor(private vehiculoService: VehiculoService, private rutaActiva: ActivatedRoute, private ruteador: Router) { }
 
 	ngOnInit() {
+		this.listadoVehiculos = this.rutaActiva.snapshot.data["listadoVehiculos"]
+
+		console.log(this.listadoVehiculos)
+
 		this.listar()
 		this.suscripcion = this.vehiculoService.onCambioLista
 			.subscribe(
@@ -51,6 +56,13 @@ export class ListadoComponent implements OnInit {
 			case tipoVehiculo.tipoCamion:
 				return "Camión"
 		}
+	}
+
+	recargar() {
+		this.ruteador.navigate(["/vehiculos"], {
+			queryParams: { nivel: 'basico' },
+			queryParamsHandling: "merge"
+		})
 	}
 
 }
