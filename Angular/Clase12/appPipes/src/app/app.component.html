@@ -1,0 +1,40 @@
+<div class="container">
+	<div class="row">
+		<form class="col-6">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Filtrar" [(ngModel)]="busqueda" name="busqueda">
+			</div>
+			<div class="form-group">
+				<select name="campo" [(ngModel)]="campo">
+					<option value="autor">Autor</option>
+					<option value="titulo">Título</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<select name="ordenar" [(ngModel)]="ordenar">
+					<option value="autor">Autor</option>
+					<option value="titulo">Título</option>
+				</select>
+			</div>
+		</form>
+		<table class="table table-hover table-striped">
+			<thead>
+				<tr>
+					<th>Título</th>
+					<th>Autor</th>
+					<th>Fecha</th>
+					<th>Descripción</th>P
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let novela of novelas | filtrarNovelas: busqueda: campo: ordenar">
+					<td>{{novela.titulo | uppercase}}</td>
+					<td>{{novela.autor}}</td>
+					<td>{{novela.fecha | date : "fullDate" | uppercase}}</td>
+					<td>{{novela.descripcion | reducidor: 30}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

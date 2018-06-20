@@ -1,0 +1,41 @@
+<div class="container">
+	<div class="row">
+		<h1>ReactiveFormsModule</h1>
+		<form class="col-12" (ngSubmit)="registrar2()" [formGroup]="grupoFormulario">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
+				<span class="help-block" *ngIf="grupoFormulario.get('nombre').hasError('required') && grupoFormulario.get('nombre').touched">El nombre es requerido</span>
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Correo" formControlName="correo">
+				<span class="help-block" *ngIf="grupoFormulario.get('correo').hasError('required') && grupoFormulario.get('correo').touched">El correo es requerido</span>
+				<span class="help-block" *ngIf="grupoFormulario.get('correo').hasError('email') && grupoFormulario.get('correo').touched">El formato del correo debe ser válido</span>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary" [disabled]="!grupoFormulario.valid">Registrar</button>
+				<button type="button" class="btn btn-success" (click)="cargarData2()">Cargar Data</button>
+				<button type="button" class="btn btn-danger" (click)="resetear2()">Resetear</button>
+			</div>
+		</form>
+	</div>
+
+	<div class="row">
+		<h1>FormsModule</h1>
+		<form class="col-12" #f="ngForm" (ngSubmit)="registrar()">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Nombre" ngModel name="nombre" required #nombre="ngModel">
+				<span class="help-block" *ngIf="!nombre.valid && nombre.touched">El nombre es requerido</span>
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Correo" ngModel name="correo" required email #correo="ngModel">
+				<span class="help-block" *ngIf="correo.hasError('required') && correo.touched">El correo es requerido</span>
+				<span class="help-block" *ngIf="correo.hasError('email') && correo.touched">El formato del correo debe ser válido</span>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary" [disabled]="!f.valid">Registrar</button>
+				<button type="button" class="btn btn-success" (click)="cargarData()">Cargar Data</button>
+				<button type="button" class="btn btn-danger" (click)="resetear()">Resetear</button>
+			</div>
+		</form>
+	</div>
+</div>
