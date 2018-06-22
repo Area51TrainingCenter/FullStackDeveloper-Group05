@@ -25,8 +25,7 @@ export class RegistroComponent implements OnInit {
 		const usuario: IUsuario = this.grupoForm.value
 		this.autenticacionService.registrar(usuario)
 			.subscribe(
-				data => console.log(data),
-				error => console.log(error)
+				data => console.log(data)
 			)
 	}
 
