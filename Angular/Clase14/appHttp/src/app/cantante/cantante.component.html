@@ -1,0 +1,35 @@
+<div class="row">
+
+
+	<div class="col-12">
+		<button class="btn btn-success" (click)="agregar()">Agregar</button>
+	</div>
+
+	<table class="table table-hover table-striped col-6" *ngIf="cantantes | async; else NoHayCantantes">
+		<thead>
+			<tr>
+				<th>Cantante</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let cantante of cantantes | async">
+				<td>{{cantante.nombre}}</td>
+				<td>
+					<button class="btn btn-danter" (click)="eliminar(cantante._id)">Eliminar</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<ng-template #NoHayCantantes>
+		<div class="col-6">
+			<h2>No existen cantantes registrados</h2>
+		</div>
+	</ng-template>
+
+	<div class="col-6">
+		<router-outlet></router-outlet>
+	</div>
+
+</div>

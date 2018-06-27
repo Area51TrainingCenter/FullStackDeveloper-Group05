@@ -1,0 +1,9 @@
+<form (ngSubmit)="nuevo()" [formGroup]="grupoForm">
+	<div class="form-group">
+		<input type="text" class="form-control" placeholder="Nombre del cantante" formControlName="nombre" name="nombre">
+		<span *ngIf="!grupoForm.get('nombre').valid && grupoForm.get('nombre').touched">El nombre es necesario</span>
+	</div>
+	<div class="form-group">
+		<button class="btn btn-success">Nuevo cantante</button>
+	</div>
+</form>
