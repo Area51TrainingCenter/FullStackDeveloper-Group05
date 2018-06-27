@@ -32,7 +32,13 @@ export class CantanteComponent implements OnInit {
 	}
 
 	eliminar(_id) {
-		this.cantanteService.eliminar(_id)
+		if (confirm("¿Está seguro?")) {
+			this.cantanteService.eliminar(_id)
+		}
+	}
+
+	modificar(_id) {
+		this.ruteador.navigate(["/cantante", "edicion", _id])
 	}
 
 }

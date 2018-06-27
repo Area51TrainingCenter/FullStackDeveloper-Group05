@@ -60,4 +60,33 @@ export class CantanteService {
 			)
 	}
 
+	detalle(_id): Observable<ICantante> {
+		console.log("detalle id", _id)
+		const accessToken: string = localStorage.getItem("accessToken")
+		const headers: HttpHeaders = new HttpHeaders({
+			"authorization": `Bearer ${accessToken}`
+		})
+
+		return this.http.get<ICantante>(`${this.urlApiRest}/cantante/${_id}`, { headers })
+			.pipe(
+				retry(3),
+				catchError(this.errores.manejador),
+				map((respuesta: any) => respuesta.resultado)
+			)
+	}
+
+
+	actualizar(cantante: ICantante): Observable<any> {
+		const accessToken: string = localStorage.getItem("accessToken")
+		const headers: HttpHeaders = new HttpHeaders({
+			"authorization": `Bearer ${accessToken}`
+		})
+
+		return this.http.put<any>(`${this.urlApiRest}/cantante/${cantante._id}`, cantante, { headers })
+			.pipe(
+				retry(3),
+				catchError(this.errores.manejador)
+			)
+	}
+
 }

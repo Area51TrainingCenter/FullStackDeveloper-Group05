@@ -16,7 +16,8 @@
 			<tr *ngFor="let cantante of cantantes | async">
 				<td>{{cantante.nombre}}</td>
 				<td>
-					<button class="btn btn-danter" (click)="eliminar(cantante._id)">Eliminar</button>
+					<button class="btn btn-danger" (click)="eliminar(cantante._id)">Eliminar</button>
+					<button class="btn btn-primary" (click)="modificar(cantante._id)">Modificar</button>
 				</td>
 			</tr>
 		</tbody>
