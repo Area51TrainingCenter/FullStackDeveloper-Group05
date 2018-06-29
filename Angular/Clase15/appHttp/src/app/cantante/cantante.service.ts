@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs";
 import { catchError, map, retry } from "rxjs/operators";
@@ -27,7 +27,6 @@ export class CantanteService {
 	}
 
 	insertar(cantante: ICantante): Observable<any> {
-
 		return this.http.post<any>(`${this.urlApiRest}/cantante`, cantante, )
 			.pipe(
 				retry(3),
@@ -36,12 +35,7 @@ export class CantanteService {
 	}
 
 	eliminar(_id) {
-		const accessToken: string = localStorage.getItem("accessToken")
-		const headers: HttpHeaders = new HttpHeaders({
-			"authorization": `Bearer ${accessToken}`
-		})
-
-		this.http.delete(`${this.urlApiRest}/cantante/${_id}`, { headers })
+		this.http.delete(`${this.urlApiRest}/cantante/${_id}`)
 			.pipe(
 				retry(3),
 				catchError(this.errores.manejador)
@@ -52,13 +46,7 @@ export class CantanteService {
 	}
 
 	detalle(_id): Observable<ICantante> {
-		console.log("detalle id", _id)
-		const accessToken: string = localStorage.getItem("accessToken")
-		const headers: HttpHeaders = new HttpHeaders({
-			"authorization": `Bearer ${accessToken}`
-		})
-
-		return this.http.get<ICantante>(`${this.urlApiRest}/cantante/${_id}`, { headers })
+		return this.http.get<ICantante>(`${this.urlApiRest}/cantante/${_id}`)
 			.pipe(
 				retry(3),
 				catchError(this.errores.manejador),
@@ -68,12 +56,7 @@ export class CantanteService {
 
 
 	actualizar(cantante: ICantante): Observable<any> {
-		const accessToken: string = localStorage.getItem("accessToken")
-		const headers: HttpHeaders = new HttpHeaders({
-			"authorization": `Bearer ${accessToken}`
-		})
-
-		return this.http.put<any>(`${this.urlApiRest}/cantante/${cantante._id}`, cantante, { headers })
+		return this.http.put<any>(`${this.urlApiRest}/cantante/${cantante._id}`, cantante)
 			.pipe(
 				retry(3),
 				catchError(this.errores.manejador)

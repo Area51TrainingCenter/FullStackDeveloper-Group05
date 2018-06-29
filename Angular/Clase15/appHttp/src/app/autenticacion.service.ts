@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { Observable } from "rxjs";
+import { Observable, Subject } from "rxjs";
 import { catchError, retry } from 'rxjs/operators';
 import { environment } from "../environments/environment";
 import { Errores } from "./errores";
@@ -12,6 +12,8 @@ import { IUsuario } from "./usuario.interface";
 export class AutenticacionService {
 	urlApiRest: string = environment.urlApiRest
 	objErrores: Errores = new Errores()
+
+	onCambioEstado: Subject<boolean> = new Subject<boolean>()
 
 	constructor(private http: HttpClient, private ruteador: Router) { }
 
@@ -30,6 +32,7 @@ export class AutenticacionService {
 				catchError(this.objErrores.manejador)
 			).subscribe(
 				(data: any) => {
+					this.onCambioEstado.next(true)
 					localStorage.setItem("accessToken", data.resultado.accessToken)
 					//console.log(data)
 					this.ruteador.navigate(["/cantante"])
@@ -38,6 +41,7 @@ export class AutenticacionService {
 	}
 
 	logout() {
+		this.onCambioEstado.next(false)
 		localStorage.clear()
 		this.ruteador.navigate([""])
 	}
