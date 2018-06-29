@@ -1,12 +1,12 @@
+import { Route } from '@angular/compiler/src/core';
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanLoad, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AutenticacionService } from './autenticacion.service';
 
-@Injectable({
-	providedIn: 'root'
-})
-export class AutenticacionGuard implements CanActivate {
+@Injectable()
+export class AutenticacionGuard implements CanActivate, CanLoad {
+
 	constructor(private autenticacionService: AutenticacionService) { }
 
 	canActivate(
@@ -15,4 +15,10 @@ export class AutenticacionGuard implements CanActivate {
 
 		return this.autenticacionService.estaAutenticado();
 	}
+
+	canLoad(route: Route): boolean | Observable<boolean> | Promise<boolean> {
+		return this.autenticacionService.estaAutenticado();
+	}
+
+
 }
