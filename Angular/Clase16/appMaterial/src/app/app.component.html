@@ -1,0 +1,59 @@
+<mat-sidenav-container>
+  <mat-sidenav #menuLateral>
+    <mat-nav-list>
+      <a class="lateral" href="" mat-list-item>
+        <mat-icon>face</mat-icon>
+        <span>Menu 1</span>
+      </a>
+      <a class="lateral" href="" mat-list-item>
+        <mat-icon>account_circle</mat-icon>
+        <span>Menu 2</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+
+      <div fxHide.gt-xs>
+        <button mat-icon-button (click)="menuLateral.toggle()">
+          <mat-icon>
+            menu
+          </mat-icon>
+        </button>
+      </div>
+
+      <h1>Sistema</h1>
+
+      <nav fxFlex fxLayoutAlign="end" fxLayoutGap="20px" fxHide.xs>
+        <app-cabecera></app-cabecera>
+      </nav>
+      <!--<ul fxLayout="row">
+          <li>
+            <a href="">Menú 1</a>
+          </li>
+          <li>
+            <a href="">Menú 2</a>
+          </li>
+        </ul>-->
+
+
+
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+<!--
+  <app-cabecera>
+
+
+</app-cabecera>
+
+<div class="container">
+  <div class="row">
+
+  </div>
+</div>
+-->

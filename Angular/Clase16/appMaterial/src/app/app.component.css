@@ -1,0 +1,45 @@
+mat-sidenav-container,
+mat-sidenav,
+mat-sidenav-content {
+  height: 100%
+}
+
+mat-sidenav {
+  width: 250px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none
+}
+
+a.lateral,
+a.lateral:link,
+a.lateral:hover,
+a.lateral:visited {
+  text-decoration: none;
+  color: black;
+  padding: 0 10px
+}
+
+a:active {
+  color: grey
+}
+
+a,
+a:link,
+a:hover,
+a:visited {
+  text-decoration: none;
+  color: white;
+  padding: 0 10px
+}
+
+span {
+  padding-left: 10px
+}
+
+mat-toolbar {
+  margin-bottom: 50px
+}

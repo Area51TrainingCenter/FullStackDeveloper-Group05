@@ -1,0 +1,9 @@
+<form class="form-signin col-12" [formGroup]="grupoForm" (ngSubmit)="registrar()">
+	<img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+	<h1 class="h3 mb-3 font-weight-normal">Registro</h1>
+	<input type="text" class="form-control" name="nombreCompleto" placeholder="Nombre completo" autofocus formControlName="nombreCompleto">
+	<input type="text" class="form-control" name="usuario" placeholder="Usuario" autofocus formControlName="usuario">
+	<input type="password" class="form-control" placeholder="Contraseña" name="contrasena" formControlName="contrasena">
+	<button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!grupoForm.valid">Registrar</button>
+	<p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+</form>
