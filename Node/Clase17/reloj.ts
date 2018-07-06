@@ -8,7 +8,6 @@ export class Reloj extends EventEmitter {
 	iniciar() {
 		setInterval(() => {
 			const fecha = new Date()
-			console.log(fecha)
 			this.emit("hora", fecha)
 		}, 1000)
 	}
