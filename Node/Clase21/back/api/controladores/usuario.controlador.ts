@@ -1,6 +1,6 @@
-import { Request, Response } from "express"
-import { Usuario } from "../modelos/usuario.modelo"
-import { crearRefreshToken, crearAccessToken } from "../servicios/tokens"
+import { Request, Response } from "express";
+import { Usuario } from "../modelos/usuario.modelo";
+import { crearAccessToken, crearRefreshToken } from "../servicios/tokens";
 
 const controlador = {
 	async insertar(req: Request, res: Response) {
@@ -54,9 +54,23 @@ const controlador = {
 		} else {
 			res
 				.status(404)
-				.json({ status: 404, message: "Usuario no existe" })
+				.json({ estado: 404, mensaje: "Usuario no existe" })
+		}
+	},
+	async nuevoAccessToken(req: Request, res: Response) {
+		const refreshToken = req.body.refreshToken
+
+		const usuario = await Usuario.findOne({ refreshToken })
+
+		if (usuario) {
+			const accessToken = crearAccessToken(usuario._id)
+
+			return res.status(200).json({ accessToken })
+		} else {
+			return res.status(404).json({ estado: 404, mensaje: "Usuario no encontrado" })
 		}
 	}
 }
 
-export { controlador }
+export { controlador };
+

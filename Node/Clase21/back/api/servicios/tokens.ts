@@ -31,12 +31,12 @@ const validarAccessToken = (accessToken: string): Promise<any> => {
 		} catch (error) {
 			if (error.message.toLowerCase() == "token expired") {
 				reject({
-					status: 401,
+					estado: 401,
 					message: "El token expiró"
 				})
 			} else {
 				reject({
-					status: 501,
+					estado: 501,
 					message: "El token es inválido"
 				})
 			}
@@ -44,4 +44,4 @@ const validarAccessToken = (accessToken: string): Promise<any> => {
 	})
 }
 
-export { crearAccessToken, crearRefreshToken, validarAccessToken }
+export { crearAccessToken, crearRefreshToken, validarAccessToken };

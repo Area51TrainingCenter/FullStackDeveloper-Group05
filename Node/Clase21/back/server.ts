@@ -8,6 +8,9 @@ import { ruteador as usuarioRuta } from "./rutas/usuario.ruta"
 import mongoose = require("mongoose")
 import bodyParser = require("body-parser")
 import { manejador as errores } from "./manejadores/errores.manejador"
+import cors = require("cors")
+
+
 
 dotenv.config({ path: "./variables.env" })
 
@@ -24,6 +27,7 @@ const app: Application = express()
 app.set("PUERTO", process.env.PORT)
 
 // Middlewares
+app.use(cors())
 app.use(bodyParser())
 app.use(bodyParser.urlencoded({ extended: true }))
 
