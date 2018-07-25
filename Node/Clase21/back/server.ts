@@ -1,3 +1,5 @@
+require('ts-node').register();
+
 // Importaciones
 import { Application } from "express"
 import express = require("express")

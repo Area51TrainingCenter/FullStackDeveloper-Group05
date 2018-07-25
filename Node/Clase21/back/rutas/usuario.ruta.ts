@@ -10,4 +10,6 @@ ruteador.get("/:id", errores.cacheo(controlador.detallar))
 ruteador.get("/", errores.cacheo(controlador.listar))
 ruteador.delete("/:id", errores.cacheo(controlador.eliminar))
 
+ruteador.post("/login", errores.cacheo(controlador.login))
+
 export { ruteador }

@@ -1,31 +1,16 @@
 import { Request, Response } from "express"
 import { Usuario } from "../modelos/usuario.modelo"
+import { crearRefreshToken, crearAccessToken } from "../servicios/tokens"
 
 const controlador = {
 	async insertar(req: Request, res: Response) {
-		/*const correo: string = req.body.correo  
-		const contrasena: string = req.body.contrasena*/
-
 		const datos = req.body
-		const usuario = new Usuario(datos)
+		datos.refreshToken = crearRefreshToken()
 
+		const usuario = new Usuario(datos)
 		await usuario.save()
 
 		res.json({ estado: 200, mensaje: "usuario grabado" })
-
-		/*usuario.save()
-			.then(() => {
-				console.log("usuario grabado")
-				res.json({ estado: 200, mensaje: "usuario grabado" })
-			})
-			.catch(error => {
-				console.log(error)
-				//console.log("ocurrió un error")
-				res.status(500).json({ estado: 500, mensaje: "ocurrió un error" })
-			})*/
-
-		//.then(()=>{}, ()=>{})
-		// {correo: "xxxx", contrasena: "kdkdkd"}
 	},
 	async listar(req: Request, res: Response) {
 		const usuarios = await Usuario.find()
@@ -53,6 +38,24 @@ const controlador = {
 		await Usuario.findOneAndUpdate({ _id }, datos)
 
 		res.json({ estado: 200 })
+	},
+	async login(req: Request, res: Response) {
+		const datos = req.body
+
+		const usuario: any = await Usuario.findOne(datos)
+
+		if (usuario) {
+			const accessToken = crearAccessToken(usuario._id)
+			const refreshToken = usuario.refreshToken
+
+			res
+				.status(200)
+				.json({ accessToken, refreshToken })
+		} else {
+			res
+				.status(404)
+				.json({ status: 404, message: "Usuario no existe" })
+		}
 	}
 }
 

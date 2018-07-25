@@ -5,6 +5,11 @@ interface IError extends Error {
 }
 
 const manejador = {
+	noEncontrada(req: Request, res: Response, next: NextFunction) {
+		const error: IError = new Error("Ruta no encontrada")
+		error.status = 404
+		next(error)
+	},
 	cacheo(ftn: (req: Request, res: Response) => Promise<any>) {
 		return (req: Request, res: Response, next: NextFunction) => {
 			return ftn(req, res).catch((error: IError) => {
@@ -12,11 +17,6 @@ const manejador = {
 				next(error)
 			})
 		}
-	},
-	noEncontrada(req: Request, res: Response, next: NextFunction) {
-		const error: IError = new Error("Ruta no encontrada")
-		error.status = 404
-		next(error)
 	},
 	errorGeneral(error: IError, req: Request, res: Response, next: NextFunction) {
 		if (process.env.ENVIRONMENT == "development") {
