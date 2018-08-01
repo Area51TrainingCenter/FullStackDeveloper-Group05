@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>{{titulo}}</h1>
+<mat-dialog-content>
+	<form fxLayout="column" [formGroup]="grupo">
+		<mat-form-field fxFlex>
+			<input type="text" formControlName="nombre" matInput placeholder="Nombre" required>
+		</mat-form-field>
+		<mat-form-field fxFlex>
+			<input type="text" formControlName="apellido" matInput placeholder="Apellido" required>
+		</mat-form-field>
+		<div fxFlex>
+			<input type="file" formControlName="foto" required>
+		</div>
+		<div fxLayout fxLayoutAlign="center" fxLayoutGap="20px">
+			<button mat-raised-button color="primary" [disabled]="!grupo.valid" (click)="ref.close(grupo)">Grabar</button>
+			<button mat-flat-button color="accent" (click)="ref.close()">Cerrar</button>
+		</div>
+	</form>
+</mat-dialog-content>

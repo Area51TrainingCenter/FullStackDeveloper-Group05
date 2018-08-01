@@ -1,0 +1,22 @@
+<div fxLayout fxLayoutAlign="center center" class="contenedor">
+
+	<mat-card fxFlex="400px">
+		<mat-card-header>
+			<h2>Login</h2>
+		</mat-card-header>
+		<mat-card-content>
+			<form (ngSubmit)="login()" fxLayout="column" [formGroup]="grupoFormulario">
+				<mat-form-field>
+					<input type="text" name="correo" required email placeholder="Correo" matInput formControlName="correo">
+				</mat-form-field>
+				<mat-form-field>
+					<input type="password" name="contrasena" required placeholder="Contraseña" matInput formControlName="contrasena">
+				</mat-form-field>
+				<div fxLayout fxLayoutAlign="center">
+					<button mat-raised-button color="primary" [disabled]="!grupoFormulario.valid">Ingresar</button>
+				</div>
+			</form>
+		</mat-card-content>
+	</mat-card>
+
+</div>

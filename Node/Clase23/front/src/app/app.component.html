@@ -1,0 +1,33 @@
+<mat-sidenav-container>
+	<mat-sidenav #menu>
+		<app-menu></app-menu>
+	</mat-sidenav>
+	<mat-sidenav-content>
+		<mat-toolbar color="primary" fxLayout *ngIf="logueado">
+			<button mat-icon-button (click)="menu.open()" matTooltip="ABRIR MENÚ">
+				<mat-icon>menu</mat-icon>
+			</button>
+			<h1>
+				Sistema
+			</h1>
+			<div fxFlex fxLayoutAlign="flex-end">
+				<button mat-flat-button color="primary" [matMenuTriggerFor]="menuDesplegable">Nombre de usuario
+					<mat-icon>arrow_drop_down</mat-icon>
+				</button>
+
+				<mat-menu #menuDesplegable="matMenu">
+					<button mat-menu-item>
+						<mat-icon>account_circle</mat-icon>
+						Perfil
+					</button>
+					<button mat-menu-item (click)="logout()">
+						<mat-icon>power_settings_new</mat-icon>
+						Cerrar sesión
+					</button>
+				</mat-menu>
+
+			</div>
+		</mat-toolbar>
+		<router-outlet></router-outlet>
+	</mat-sidenav-content>
+</mat-sidenav-container>
