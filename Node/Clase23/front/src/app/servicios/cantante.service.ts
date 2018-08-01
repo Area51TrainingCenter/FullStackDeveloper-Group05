@@ -11,11 +11,8 @@ export class CantanteService {
 
 	constructor(private http: HttpClient) { }
 
-	insertar(cantante: ICantante): Observable<any> {
-		const fd = new FormData()
-		fd.append("nombre", cantante.nombre)
-		fd.append("apellido", cantante.apellido)
-		fd.append("foto", cantante.foto)
+	insertar(fd: FormData): Observable<any> {
+
 
 		return this.http.post(`${environment.apiRest}/app/cantante`, fd)
 	}

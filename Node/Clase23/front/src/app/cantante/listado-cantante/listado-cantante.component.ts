@@ -29,8 +29,12 @@ export class ListadoCantanteComponent implements OnInit {
 			if (!respuesta) return
 
 			const datos: FormGroup = respuesta
+			const fd = new FormData()
+			fd.append("nombre", datos.value.nombre)
+			fd.append("apellido", datos.value.apellido)
+			fd.append("foto", datos.value.foto)
 
-			this.cantanteService.insertar(datos.getRawValue())
+			this.cantanteService.insertar(fd)
 				.subscribe(
 					() => this.notificador.open("Cantante grabado", null, { duration: 2000 }),
 					() => this.notificador.open("Ocurrió un error", null, { duration: 2000 })

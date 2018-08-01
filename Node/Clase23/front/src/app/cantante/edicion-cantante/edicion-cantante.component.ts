@@ -32,8 +32,13 @@ export class EdicionCantanteComponent implements OnInit {
 		return this.formBuilder.group({
 			nombre: [this.cantante.nombre, Validators.required],
 			apellido: [this.cantante.apellido, Validators.required],
-			foto: [this.cantante.foto, Validators.required]
+			foto: [null]
 		})
+	}
+
+	seleccion(evento) {
+		const archivos = evento.target.files
+		this.grupo.patchValue({ foto: archivos[0] })
 	}
 
 }
