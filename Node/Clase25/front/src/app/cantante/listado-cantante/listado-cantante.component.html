@@ -1,0 +1,36 @@
+<div fxLayout fxLayoutAlign="center">
+	<mat-card fxFlex="700px">
+		<mat-card-header fxLayout>
+			<h2>Cantantes</h2>
+			<div fxFlex fxLayoutAlign="flex-end">
+				<button mat-mini-fab (click)="agregar()">
+					<mat-icon>add</mat-icon>
+				</button>
+			</div>
+		</mat-card-header>
+		<mat-card-content>
+
+			<mat-table [dataSource]="miData" matSort matSortActive="nombre" matSortDirection="asc">
+				<ng-container matColumnDef="apellido">
+					<mat-header-cell *matHeaderCellDef>Apellido del cantante</mat-header-cell>
+					<mat-cell *matCellDef="let elem">{{elem.apellido}}</mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="nombre">
+					<mat-header-cell *matHeaderCellDef mat-sort-header>Nombre del cantante</mat-header-cell>
+					<mat-cell *matCellDef="let elem">{{elem.nombre}}</mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="botones">
+					<mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+					<mat-cell *matCellDef="let elem">
+						<button mat-mini-fab color="warn" (click)="eliminar(elem._id)">
+							<mat-icon>delete</mat-icon>
+						</button>
+					</mat-cell>
+				</ng-container>
+				<mat-header-row *matHeaderRowDef="columnasAMostrar"></mat-header-row>
+				<mat-row *matRowDef="let elem; columns: columnasAMostrar"></mat-row>
+			</mat-table>
+			<mat-paginator [length]="longitud" pageSize="15"></mat-paginator>
+		</mat-card-content>
+	</mat-card>
+</div>

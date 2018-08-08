@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Confirmación</h2>
+<mat-dialog-content>
+	<h3>{{mensaje}}</h3>
+</mat-dialog-content>
+<mat-dialog-actions fxLayout fxLayoutAlign="center" fxLayoutGap="20px">
+	<button mat-raised-button color="warn" (click)="dialogRef.close(true)">SÍ</button>
+	<button mat-flat-button color="primary" (click)="dialogRef.close(false)">NO</button>
+</mat-dialog-actions>
